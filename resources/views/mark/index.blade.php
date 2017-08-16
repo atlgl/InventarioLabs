@@ -7,7 +7,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                 Marcas 
-                <a href="/mark/create" class="btn btn-info">Agregar</a>
+                <a href="{{ url('mark/create')}}" class="btn btn-info">Agregar</a>
                 </div>
 
                  <div class="panel-body">

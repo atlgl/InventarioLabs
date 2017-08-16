@@ -7,7 +7,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                 Software
-                <a href="/software/create" class="btn btn-info">Agregar</a>
+                <a href="{{ url('software/create')}}" class="btn btn-info">Agregar</a>
                 </div>
 
                  <div class="panel-body">

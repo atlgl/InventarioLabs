@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Lab;
+use App\Computer;
+use App\User;
 use App\Inventory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class InventoryController extends Controller
 {
@@ -15,6 +19,7 @@ class InventoryController extends Controller
     public function index()
     {
         //
+        return view('inventory.index',['lab'=>Lab::all(),'comps'=>Computer::all()]);
     }
 
     /**
@@ -25,6 +30,7 @@ class InventoryController extends Controller
     public function create()
     {
         //
+        return view('inventory.create',['computer'=>Computer::all(),'lab'=>Lab::all()]);
     }
 
     /**
@@ -36,6 +42,15 @@ class InventoryController extends Controller
     public function store(Request $request)
     {
         //
+        Inventory::create([
+            'computer_id'=>$request['computerid'],
+            'lab_id'=>$request['labid'],
+            'user_id'=>Auth::id(),
+            'barcode'=>$request['barcode'],
+            'inventorystate'=>$request['inventorystate']
+        ]);
+        return redirect('/inventory');
+        //return view('inventory.create',['computer'=>Computer::all(),'lab'=>Lab::find($request['lab_id'])]);
     }
 
     /**
@@ -44,9 +59,10 @@ class InventoryController extends Controller
      * @param  \App\Inventory  $inventory
      * @return \Illuminate\Http\Response
      */
-    public function show(Inventory $inventory)
+    public function show($id)
     {
-        //
+        $lab=Lab::find($id);
+         return view('inventory.create',['labd'=>$lab,'computer'=>Computer::all()]);
     }
 
     /**
@@ -80,6 +96,8 @@ class InventoryController extends Controller
      */
     public function destroy(Inventory $inventory)
     {
-        //
+        $i=Inventory::findOrFail($inventory->id);
+        $i->delete();
+        return redirect('/inventory');
     }
 }

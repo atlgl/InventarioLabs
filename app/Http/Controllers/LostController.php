@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Lab;
+use App\Inventory;
 use App\Lost;
 use Illuminate\Http\Request;
 
@@ -15,7 +17,7 @@ class LostController extends Controller
     public function index()
     {
         //
-        return view('lost.index',['data'=>Lost::all()]);
+       
     }
 
     /**
@@ -23,10 +25,10 @@ class LostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         //
-        return view('lost.create');
+        return $request;
     }
 
     /**
@@ -39,9 +41,14 @@ class LostController extends Controller
     {
         //
         $l=Lost::create([
-            'desc'=>$request['desc'],
-            'computers_id'=>$request['computers_id']
+            'desc'=>$request['desclost'],
+            'inventory_id'=>$request['inventoryid']
         ]);
+        
+        $lab=Lab::find($request['labid']);
+        return view('lost.index',['labs'=>$lab]);
+        
+        
     }
 
     /**
@@ -50,9 +57,11 @@ class LostController extends Controller
      * @param  \App\Lost  $lost
      * @return \Illuminate\Http\Response
      */
-    public function show(Lost $lost)
+    public function show($id)
     {
-        //
+        //return $id;
+        $lab=Lab::find($id);
+        return view('lost.index',['labs'=>$lab]);
     }
 
     /**
@@ -61,9 +70,10 @@ class LostController extends Controller
      * @param  \App\Lost  $lost
      * @return \Illuminate\Http\Response
      */
-    public function edit(Lost $lost)
+    public function edit(Lab $lost)
     {
         //
+        return $lost;
     }
 
     /**
@@ -86,6 +96,11 @@ class LostController extends Controller
      */
     public function destroy(Lost $lost)
     {
-        //
+        
+        $l=Lost::findOrFail($lost->id);
+        $lab=Lab::find($lost->inventory['lab_id']);
+        $l->delete();
+        return view('lost.index',['labs'=>$lab]);
+        
     }
 }

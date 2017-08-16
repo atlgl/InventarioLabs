@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Inventario Labs') }}</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -46,12 +46,14 @@
                             <li><a href="{{ route('login') }}">Iniciar</a></li>
                             <li><a href="{{ route('register') }}">Registrar</a></li>
                         @else
-                           <li><a href="/software">Software</a></li>
-                           <li><a href="/teacher">Docente</a></li>
-                           <li><a href="/fail">Fallas</a></li>
-                           <li><a href="/mark">Marcas</a></li>
-                           <li><a href="/computer">Computadoras</a></li>
-                           <li><a href="/inventory">Inventario</a></li>
+                           <li><a href="{{url('software')}}">Software</a></li>
+                           <li><a href="{{url('teacher')}}">Docente</a></li>
+                           <li><a href="{{url('fail')}}">Fallas</a></li>
+                           <li><a href="{{url('mark')}}">Marcas</a></li>
+                           <li><a href="{{url('computer')}}">Computadoras</a></li>
+                           <li><a href="{{url('inventory')}}">Inventario</a></li>
+                           <li><a href="{{url('lab')}}">Laboratorios</a></li>
+                           
                            
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

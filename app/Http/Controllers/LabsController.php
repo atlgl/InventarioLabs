@@ -39,8 +39,8 @@ class LabsController extends Controller
     {
         //
         Lab::create([
-            'name'=>$request['name'],
-            'desc'=>$request['description']
+            'name'=>$request['labname'],
+            'desc'=>$request['labdescription']
         ]);
         return redirect('/lab');
     }
@@ -78,8 +78,8 @@ class LabsController extends Controller
     {
         //
         $l=Lab::find($lab->id);
-        $l->name=$request['name'];
-        $l->desc=$request['description'];
+        $l->name=$request['labname'];
+        $l->desc=$request['labdescription'];
         $l->save();
         return redirect('/lab');
         

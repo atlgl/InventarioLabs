@@ -5,35 +5,26 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Nuevo Software</div>
+                <div class="panel-heading">Nuevo Falla</div>
 
                  <div class="panel-body">
-                 <form class="form-horizontal" method="post" action="/software">
+                 <form class="form-horizontal" method="post" action="{{url('lost/create')}}">
+                    <input name="inventoryid" value="{{$id}}"/>
 
                     {{csrf_field()}}
-                    <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Nombre</label>
+          
+                        <div class="form-group{{ $errors->has('descfail') ? ' has-error' : '' }}">
+                            <label for="descfail" class="col-md-4 control-label">Descripcion</label>
+                            
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="" required autofocus>
+                                <textarea id="descfail" type="text" class="form-control" name="descfail"  required autofocus>
+                                    
+                                </textarea>
 
-                                @if ($errors->has('name'))
+                                @if ($errors->has('descfail'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="description" class="col-md-4 control-label">Descripcion</label>
-
-                            <div class="col-md-6">
-                                <input id="description" type="text" class="form-control" name="description" value="" required autofocus>
-
-                                @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('desc') }}</strong>
+                                        <strong>{{ $errors->first('descfail') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -43,6 +34,7 @@
                                 <button type="submit" class="btn btn-primary">
                                     Guardar
                                 </button>
+                                
                             </div>
                         </div>
                  </form>

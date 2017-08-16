@@ -19,17 +19,43 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('/teacher',	'TeacherController');
+Route::resource('teacher',	'TeacherController');
 
-Route::resource('/software','SoftwareController');
+Route::resource('software','SoftwareController');
 
-Route::resource('/mark','MarkController');
+Route::resource('mark','MarkController');
 
-Route::resource('/lab','LabsController');
+Route::resource('lab','LabsController');
 
-Route::resource('/computer','ComputersController');
+Route::resource('computer','ComputerController');
 
-Route::resource('/inventory','InventoryController');
+Route::resource('inventory','InventoryController');
 
-Route::resource('/fails','ComputersController');
+Route::resource('fail','FailsController');
+
+Route::resource('installer','InstalledController');
+
+Route::resource('lost','LostController');
+
+Route::resource('android/software','Android\SoftwareController');
+
+Route::resource('android/lab','Android\LabController');
+
+Route::resource('android/fail','Android\FailController');
+
+Route::resource('android/computer','Android\ComputerController');
+
+Route::resource('android/installed','Android\InstalledController');
+
+Route::resource('android/inventory','Android\InventoryController');
+
+Route::resource('android/mark','Android\MarkController');
+
+Route::resource('android/teacher','Android\TeacherController');
+
+Route::resource('android/user','Android\UserController');
+
+Route::resource('android/lost','Android\LostController');
+
+
 

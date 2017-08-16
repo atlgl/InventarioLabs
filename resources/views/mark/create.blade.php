@@ -8,7 +8,7 @@
                 <div class="panel-heading">Nuevo Marca</div>
 
                  <div class="panel-body">
-                 <form class="form-horizontal" method="post" action="/mark">
+                 <form class="form-horizontal" method="post" action="{{url('mark')}}">
 
                     {{csrf_field()}}
                     <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">

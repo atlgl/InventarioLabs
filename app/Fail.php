@@ -4,20 +4,20 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Fails extends Model
+class Fail extends Model
 {
     //
      protected $fillable = [
-        'compid',
+        'inventory_id',
         'desc',
         'failtype',
-
+        'failstate'
     ];
     
-    protected $table='Fails';
+    protected $table='fails';
 
-    public function computer(){
-        return $this->belongsTo('App\Computer');
+    public function inventory(){
+        return $this->belongsTo('App\Inventory');
     }
 
 }

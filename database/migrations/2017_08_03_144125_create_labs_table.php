@@ -17,6 +17,7 @@ class CreateLabsTable extends Migration
             $table->increments('id');
             $table->string('name',40);
             $table->string('desc',255);
+            $table->enum('labstate',['Funcionando','Reparacion','Fuera Servicio']);
             $table->timestamps();
         });
     }

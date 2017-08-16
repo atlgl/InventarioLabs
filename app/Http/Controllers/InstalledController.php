@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Lab;
+use App\Inventory;
+use App\Software;
 use App\Installed;
 use Illuminate\Http\Request;
 
@@ -35,7 +38,28 @@ class InstalledController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        if($request['agregartodos'])
+        {
+            $lab=Lab::find($request['labid']);
+            foreach($lab->inventory as $i)
+            {
+                Installed::create([
+                    'inventory_id'=>$i->id,
+                    'software_id'=>$request['softwareid']
+                ]);
+            }
+            return view('installed.index',['lab'=>$lab,'software'=>Software::all()]); 
+        }
+        else{
+        Installed::create([
+            'inventory_id'=>$request['inventoryid'],
+            'software_id'=>$request['softwareid']
+        ]);
+        $lab=Lab::find($request['labid']);
+        return view('installed.index',['lab'=>$lab,'software'=>Software::all()]);
+        }
+        
     }
 
     /**
@@ -44,9 +68,11 @@ class InstalledController extends Controller
      * @param  \App\Installed  $installed
      * @return \Illuminate\Http\Response
      */
-    public function show(Installed $installed)
+    public function show($id)
     {
         //
+        $lab=Lab::find($id);
+        return view('installed.index',['lab'=>$lab,'software'=>Software::all()]);
     }
 
     /**
@@ -78,8 +104,15 @@ class InstalledController extends Controller
      * @param  \App\Installed  $installed
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Installed $installed)
+    public function destroy(Request $request,Installed $installed)
     {
         //
+        if($request['installedid']){
+            $i=Installed::findOrFail($request['installedid']);
+            $lab=Lab::find($i->inventory['lab_id']);
+            $i->delete();
+            return view('installed.index',['lab'=>$lab,'software'=>Software::all()]);
+        }
+        
     }
 }

@@ -15,15 +15,13 @@ class CreateFailsTable extends Migration
     {
         Schema::create('fails', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('computer_id')->unsigned();
+            $table->integer('inventory_id')->unsigned();
             $table->string('desc',255);
-            $table->string('failtype',30);
-
+            $table->enum('failtype',['Mantenimiento','No enciende','Otro']);
+            $table->enum('failstate',['En Progreso','Detenida','Lista','Otro']);
             $table->timestamps();
-
-
-             $table->foreign('computer_id')
-                ->references('id')->on('computers')
+            $table->foreign('inventory_id')
+                ->references('id')->on('inventories')
                 ->onDelete('cascade');
         });
     }

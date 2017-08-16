@@ -16,10 +16,10 @@ class CreateLostsTable extends Migration
         Schema::create('losts', function (Blueprint $table) {
             $table->increments('id');
             $table->string('desc',255);
-            $table->integer('computer_id')->unsigned();
+            $table->integer('inventory_id')->unsigned();
             $table->timestamps();
-            $table->foreign('computer_id')
-                ->references('id')->on('computers')
+            $table->foreign('inventory_id')
+                ->references('id')->on('inventories')
                 ->onDelete('cascade');
 
         });

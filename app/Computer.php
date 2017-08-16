@@ -7,10 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Computer extends Model
 {
      protected $fillable = [
-        'name',
+        'modelname',
         'desc',
-        'barcode',
-        'marks_id'
+        'mark_id'
     ];
 
     public function fail(){
@@ -21,7 +20,7 @@ class Computer extends Model
     }
 
     public function mark(){
-        return $this->hasMany('App\Mark');
+        return $this->belongsTo('App\Mark');
     }
 
     public function installed(){

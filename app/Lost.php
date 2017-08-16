@@ -9,9 +9,14 @@ class Lost extends Model
     //
     protected $fillable=[
         'desc',
-        'compid'
+        'inventory_id'
     ];
+ 
     public function computer(){
-        return $this->belongTo('App\Computer');
+        return $this->belongsTo('App\Computer');
+    }
+    
+    public function inventory(){
+        return $this->belongsTo('App\Inventory');
     }
 }

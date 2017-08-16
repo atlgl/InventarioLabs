@@ -97,7 +97,7 @@
                                 <button type="submit" class="btn btn-primary">
                                     Update
                                 </button>
-                                <a href="\teacher" class="btn btn-warning">Cancelar</a>
+                                <a href="{{ url('teacher')}}" class="btn btn-warning">Cancelar</a>
                             </div>
                         </div>
 

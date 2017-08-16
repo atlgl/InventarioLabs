@@ -5,10 +5,10 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Nuevo Laboratorio</div>
+                <div class="panel-heading">Nuevo Docente  </div>
 
                  <div class="panel-body">
-                 <form class="form-horizontal" method="post" action="/teacher">
+                 <form class="form-horizontal" method="post" action="{{ url('teacher')}}">
 
                     {{csrf_field()}}
                     <div class="form-group{{ $errors->has('nombre') ? ' has-error' : '' }}">

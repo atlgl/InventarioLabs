@@ -9,11 +9,12 @@ class Installed extends Model
     //
     protected $fillable=[
         'software_id',
-        'computers_id'
+        'inventory_id'
     ];
-
-    public function computer(){
-        return $this->belongsTo('App\Computer');
+    
+  
+    public function inventory(){
+        return $this->belongsTo('App\Inventory');
     }
 
     public function software(){

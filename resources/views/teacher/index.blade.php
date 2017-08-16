@@ -6,8 +6,8 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                Laboratorios
-                <a href="/teacher/create" class="btn btn-info">Agregar</a>
+                Docentes 
+                <a href="{{ url('teacher/create')}}" class="btn btn-info">Agregar</a>
                 </div>
 
                  <div class="panel-body">

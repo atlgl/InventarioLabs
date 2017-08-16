@@ -8,7 +8,7 @@
                 <div class="panel-heading">Nuevo Software</div>
 
                  <div class="panel-body">
-                 <form class="form-horizontal" method="post" action="/software">
+                 <form class="form-horizontal" method="post" action="{{ url('software') }}">
 
                     {{csrf_field()}}
                     <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">

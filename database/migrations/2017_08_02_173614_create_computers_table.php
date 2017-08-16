@@ -15,10 +15,9 @@ class CreateComputersTable extends Migration
     {
         Schema::create('computers', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('modelname');
             $table->string('desc');
             $table->integer('mark_id')->unsigned();
-            $table->integer('barcode');
             $table->foreign('mark_id')
                 ->references('id')->on('marks')
                 ->onDelete('cascade');

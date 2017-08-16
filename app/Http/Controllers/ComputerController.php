@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Computer;
+use App\Mark;
 use Illuminate\Http\Request;
 
 class ComputerController extends Controller
@@ -14,7 +15,7 @@ class ComputerController extends Controller
      */
     public function index()
     {
-        //
+        return view('computer.index',['computer'=>Computer::all()]);
     }
 
     /**
@@ -25,6 +26,7 @@ class ComputerController extends Controller
     public function create()
     {
         //
+        return view('computer.create',['marks'=>Mark::all()]);
     }
 
     /**
@@ -35,7 +37,12 @@ class ComputerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Computer::create([
+            'modelname'=>$request['modelname'],
+            'desc'=>$request['description'],
+            'mark_id'=>$request['marca']
+        ]);
+        return redirect('/computer');
     }
 
     /**
@@ -58,6 +65,7 @@ class ComputerController extends Controller
     public function edit(Computer $computer)
     {
         //
+        return view('computer.edit',['computer'=>$computer,'marc'=>Mark::all()]);
     }
 
     /**
@@ -69,7 +77,13 @@ class ComputerController extends Controller
      */
     public function update(Request $request, Computer $computer)
     {
-        //
+        $c=Computer::find($computer->id);
+        $c->modelname=$request['name'];
+        $c->desc=$request['description'];
+        $c->mark_id=$request['marca'];
+        $c->save();
+        
+        return redirect('/computer');
     }
 
     /**
@@ -80,6 +94,8 @@ class ComputerController extends Controller
      */
     public function destroy(Computer $computer)
     {
-        //
+        $c=Computer::findOrFail($computer->id);
+        $c->delete();
+        return redirect('/computer');
     }
 }
