@@ -46,7 +46,7 @@ class PersonaController extends Controller
             'estadocivil'=>$request->input('estadocivil')
             
 		]);
-		return json_encode(array('error'=>'ok','Guardado'));
+		return json_encode(array('error'=>'ok','mensaje'=>'Guardado'));
     }
 
     /**
@@ -83,13 +83,13 @@ class PersonaController extends Controller
         //
         
         $p=Persona::find($id);
-        $p->nombre=$request-['nombre'];
-        $p->apellidos=$request['apellidos'];
-        $p->fechanac=$request['fechanac'];
-        $p->estadocivil=$request['estadocivil'];    
+        $p->nombre=$request->input('nombre');
+        $p->apellidos=$request->input('apellidos');
+        $p->fechanac=$request->input('fechanac');
+        $p->estadocivil=$request->input('estadocivil');    
         $p->save();    
 				
-		return json_encode(array('error'=>'ok','Actualizado'));
+		return json_encode(array('error'=>'ok','mensaje'=>'Actualizado'));
     }
 
     /**
@@ -103,6 +103,6 @@ class PersonaController extends Controller
         //
         $p=Persona::findOrFail($id);
         $p->delete();
-		return json_encode(array('error'=>'ok','Guardado'));
+		return json_encode(array('error'=>'ok','mensaje'=>'Eliminado'));
     }
 }
