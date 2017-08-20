@@ -57,5 +57,12 @@ Route::resource('android/user','Android\UserController');
 
 Route::resource('android/lost','Android\LostController');
 
+Route::resource('android/persona','PersonaController');
+
+Route::get('clave/token',function(){
+    $token =csrf_token();
+   return  $token; 
+});
+
 
 

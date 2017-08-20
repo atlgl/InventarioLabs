@@ -16,7 +16,12 @@
                 </div>
 
                  <div class="panel-body">
-                    <table class="table table-stripped">
+                     <div class="form-group" >
+                     <input type="search" class="form-control" id="txtbusqueda" onkeyup="busqueda()" placeholder="Buscar elementos...."/>
+                      
+                  </div>
+                   
+                    <table id="tablaprincipal" class="table table-stripped">
                         <thead>
                             <tr>
                                 <th>ID</th>
