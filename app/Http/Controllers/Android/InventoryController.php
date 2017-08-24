@@ -50,6 +50,14 @@ class InventoryController extends Controller
     public function show(Inventory $inventory)
     {
         //
+        return Inventory::where('lab_id',$inventory->id)->with(['lab','computer.mark'])->get();
+    }
+    
+    
+    public function findinventory($id){
+        
+        return Inventory::where('barcode',$id)->with(['lab','computer.mark'])->get();
+        
     }
 
     /**
@@ -61,6 +69,7 @@ class InventoryController extends Controller
     public function edit(Inventory $inventory)
     {
         //
+        
     }
 
     /**

@@ -59,6 +59,9 @@ Route::resource('android/lost','Android\LostController');
 
 Route::resource('android/persona','PersonaController');
 
+
+Route::get('android/findinventory/{id}','Android\InventoryController@findinventory');
+
 /*
 Route::get('clave/token',function(){
     $token =csrf_token();
