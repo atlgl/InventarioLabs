@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Android;
 
 use App\Inventory;
+use App\Lab;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -47,7 +48,7 @@ class InventoryController extends Controller
      * @param  \App\Inventory  $inventory
      * @return \Illuminate\Http\Response
      */
-    public function show(Inventory $inventory)
+    public function show(Lab $inventory)
     {
         //
         return Inventory::where('lab_id',$inventory->id)->with(['lab','computer.mark'])->get();
@@ -97,5 +98,9 @@ class InventoryController extends Controller
     public function destroy(Inventory $inventory)
     {
         //
+        $i=Inventory::find($inventory->id);
+        $i->delete();
+        
+        return json_encode(['mensaje'=>'Computadora Eliminada']);
     }
 }

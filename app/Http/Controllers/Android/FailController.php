@@ -39,6 +39,16 @@ class FailController extends Controller
     public function store(Request $request)
     {
         //
+        
+        $f=Fail::create(
+        [
+            'desc'=>$request->input('desc'),
+            'inventory_id'=>$request->input('inventory_id'),
+            'failtype'=>$request->input('failtype'),
+            'failstate'=>$request->input('failstate')
+        ]);
+        return json_encode(['mensaje'=>'Guardado Correctamente','datos'=>$f]);
+            
     }
 
     /**
@@ -50,6 +60,7 @@ class FailController extends Controller
     public function show(Fail $fail)
     {
         //
+        return Fail::find($fail->id);
     }
 
     /**
@@ -73,6 +84,7 @@ class FailController extends Controller
     public function update(Request $request, Fail $fail)
     {
         //
+        
     }
 
     /**
@@ -84,5 +96,9 @@ class FailController extends Controller
     public function destroy(Fail $fail)
     {
         //
+        $f=Fail::find($fail->id);
+        $f->delete();
+        
+        return json_encode(['mensaje'=>'Eliminado correctamente']);
     }
 }

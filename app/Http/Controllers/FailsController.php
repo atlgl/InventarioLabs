@@ -41,7 +41,7 @@ class FailsController extends Controller
     public function store(Request $request)
     {
         //
-        $f=Fail::create(
+        Fail::create(
         [
             'desc'=>$request['description'],
             'inventory_id'=>$request['inventorieid'],
