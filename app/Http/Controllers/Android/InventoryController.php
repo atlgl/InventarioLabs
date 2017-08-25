@@ -53,6 +53,10 @@ class InventoryController extends Controller
         return Inventory::where('lab_id',$inventory->id)->with(['lab','computer.mark'])->get();
     }
     
+    public function findbylab($id){
+        return Inventory::where('lab_id',$id)->with(['lab','computer.mark'])->get();
+    }
+    
     
     public function findinventory($id){
         

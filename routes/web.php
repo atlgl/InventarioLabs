@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@principal');
 
 Auth::routes();
 
@@ -61,6 +59,8 @@ Route::resource('android/persona','PersonaController');
 
 
 Route::get('android/findinventory/{id}','Android\InventoryController@findinventory');
+Route::get('android/findbylab/{id}','Android\InventoryController@findbylab');
+
 
 /*
 Route::get('clave/token',function(){
