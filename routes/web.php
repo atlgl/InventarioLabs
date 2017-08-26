@@ -17,7 +17,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('teacher',	'TeacherController');
+Route::resource('teacher','TeacherController');
 
 Route::resource('software','SoftwareController');
 
@@ -61,12 +61,10 @@ Route::resource('android/persona','PersonaController');
 Route::get('android/findinventory/{id}','Android\InventoryController@findinventory');
 Route::get('android/findbylab/{id}','Android\InventoryController@findbylab');
 
+Route::post('android/acceso','Android\UserController@acceso');
 
-/*
-Route::get('clave/token',function(){
-    $token =csrf_token();
-   return  $token; 
-});*/
+
+
 
 
 

@@ -27,7 +27,7 @@
                                 <th>ID</th>
                                 <th>Modelo</th>
                                 <th>Barcode</th>
-                                <th>Fallas</th>
+                                <th>Faltantes</th>
                             </tr>
                         </thead>
                         <tbody>

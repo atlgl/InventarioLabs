@@ -3,11 +3,15 @@
 namespace App\Http\Controllers\Android;
 
 use App\User;
+
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
+    
+   
     /**
      * Display a listing of the resource.
      *
@@ -83,5 +87,20 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         //
+    }
+    
+    public function acceso(Request $request){
+       /*$model = User::where('email', '==', $request->input('email'))
+           ->andwhere('password', '==', $request->input('pass'))
+           ->firstOrFail();*/
+        $email=$request->input('email');
+        $password=$request->input('pass');
+        
+        if (Auth::attempt(['email' => $email, 'password' => $password])) {
+            // Authentication passed...
+            return json_encode(['error'=>'0','mensaje'=>'logeado','email'=>$email]);
+        }
+        else
+            return json_encode(['error'=>'1','mensaje'=>'No se ha encontrado el usuario']);
     }
 }
